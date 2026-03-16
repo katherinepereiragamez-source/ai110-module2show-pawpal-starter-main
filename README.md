@@ -1,3 +1,6 @@
+#Reflection
+I have implemented all four classes of the app. I chose to focus on the filtering and task conflict detectors for my main source
+of testing. My pawpal files have sucessfully been integrated into the AI and focuses more on scheduling tasks.
 # PawPal+ (Module 2 Project)
 
 You are building **PawPal+**, a Streamlit app that helps a pet owner plan care tasks for their pet.
