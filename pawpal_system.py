@@ -19,6 +19,30 @@ class Task:
         """Reset the task's completion status."""
         self.completed = False
 
+    def recur(self) -> "Task":
+        """Return a fresh copy of this task for the next occurrence.
+        Only applies to tasks with frequency 'daily' or 'weekly'.
+        Raises ValueError for unsupported frequencies.
+        """
+        from datetime import datetime, timedelta
+
+        FREQ_DAYS = {"daily": 1, "weekly": 7}
+        if self.frequency not in FREQ_DAYS:
+            raise ValueError(
+                f"recur() is not supported for frequency '{self.frequency}'"
+            )
+
+        next_date = datetime.today() + timedelta(days=FREQ_DAYS[self.frequency])
+        return Task(
+            name=self.name,
+            description=self.description,
+            duration=self.duration,
+            frequency=self.frequency,
+            time=self.time,
+            pet_name=self.pet_name,
+            completed=False,          # new occurrence starts incomplete
+        )
+
 
 @dataclass
 class Pet:
